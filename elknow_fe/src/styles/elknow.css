@@ -1,0 +1,187 @@
+@import '~antd/dist/antd.css';
+@import './common/nav.css';
+
+span {
+    display: inline-block;
+}
+a {
+    color: #444;
+}
+.elknow {
+    padding-top: 60px;
+    height: 100%;
+    background: url(//localhost:8000/images/tool-bg.png) left top repeat-x
+}
+.elknow-content {
+    width: 980px;
+    margin: 0 auto;
+}
+
+.elknow-content-lf {
+    float: left;
+    width: 700px;
+}
+.elknow-content-rg {
+    float: right;
+    width: 280px;
+}
+
+
+/* carousel */
+.carousel-item {
+    position: relative;
+}
+.carousel-item img {
+    /*margin: 0 auto;*/
+}
+
+/* classify */
+.classify-name {
+    font-size: 14px;
+}
+
+/* knowList  item */
+.elknow-knowList {
+    padding: 20px 0 50px;
+}
+.elknow-noKnows {
+    text-align: center;
+    font-size: 18px;
+    color: #f00;
+}
+.elknow-knowItem {
+    position: relative;
+    width: 100%;
+    margin: 0 0 17px;
+    padding: 0 40px 17px 0;
+    border-bottom: 1px solid #f0f0f0;
+    word-wrap: break-word
+}
+.knowItem-author {
+    margin-bottom: 5px;
+    font-size: 13px
+}
+.author-headImage, .author-info {
+    display: inline-block;
+    vertical-align: middle;
+}
+.author-headImage img {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+}
+.author-name {
+    padding: 0 10px;
+}
+.knowItem-title {
+    margin: -7px 0 4px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+.knowItem-abstract {
+    margin: 0 0 8px;
+    font-size: 13px;
+    line-height: 24px;
+}
+.knowItem-info li{
+    display: inline-block;
+    margin-right: 15px;
+}
+
+
+/* elknow-hotKnow */
+.elknow-hotKnow {
+    margin: 100px 10px;
+}
+.elknow-hotTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.elknow-hotItems {
+    margin-bottom: 10px;
+}
+.hotKnow-item {
+    padding: 4px 0;
+    border-bottom: 1px solid #ddd;
+}
+.hotKnow-title {
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+}
+.hotKnow-info {
+    /*display: inline-block;*/
+    margin-right: 10px;
+}
+.hotKnow-info li {
+    display: inline-block;
+    margin-right: 15px;
+}
+.hotKnow-author-name {
+    display: inline-block;
+    line-height: 21px;
+    float: right;
+    color: #42c02e;
+}
+
+
+
+/* ant design*/
+.ant-input-affix-wrapper {
+    margin-right: 100px;
+    width: 300px;
+}
+.ant-btn {
+    margin-right: 40px;
+    font-size: 14px;
+}
+.ant-carousel .slick-slide {
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+}
+.ant-btn-group {
+    margin-right: 40px;
+    margin-top: 30px;
+}
+.ant-dropdown-button .ant-btn {
+    margin-right: 0;
+    background: #f7f7f7;
+}
+/*.ant-dropdown-trigger {
+    padding: 4px 7px 6px 8px;  没有详细研究为什么需要设置这个，去除以后按钮不一致高
+}*/
+.ant-badge {
+    left: 60px;
+    top: -20px;
+}
+.ant-dropdown {
+    background: #f7f7f7;
+}
+.ant-pagination {
+    text-align: center;
+}
+.anticon-star {
+    color: #0e77ca;
+}
+.anticon-message {
+    color: #f04134;
+}
+
+
+/* media */
+@media all and (max-width:980px){
+    .ant-input-affix-wrapper {
+        flex: 1;
+        margin-right: 50px;
+    }
+    .nav-title {
+        margin-left: 0;
+    }
+
+}

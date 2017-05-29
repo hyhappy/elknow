@@ -1,0 +1,53 @@
+
+
+.header a {
+    display: inline-block;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+}
+.header a:hover {
+    color: #108ee9;
+}
+.manage, .index {
+    float: right;
+    margin-left: 20px;
+}
+
+/* 用户信息 */
+.user-info {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+}
+.user-info-item {
+    margin: 20px 0;
+}
+.user-info span {
+    display: inline-block;
+    padding-right: 10px;
+    width: 80px;
+    text-align: right;
+    vertical-align: top;
+}
+.user-info-img img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+}
+
+
+/* 文章 */
+
+
+.ant-table {
+    font-size: 13px;
+}
+.userInfo-knowList .ant-table-row td:nth-child(2) {
+    width: 25%;
+}
+.table-action .ant-btn{
+    margin: 0;
+    padding: 4px 8px;
+    font-size: 12px;
+}

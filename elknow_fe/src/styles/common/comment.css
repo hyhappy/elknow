@@ -1,0 +1,64 @@
+.comment {
+    margin: 40px 0;
+}
+.comment-new {
+    margin-bottom: 30px;
+}
+.comment-author img, .item-author img{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+}
+.comment-new .ant-input, .item-author-info {
+    display: inline-block;
+    width: 630px;
+    float: right;
+    font-size: 14px;
+}
+.comment-action {
+    text-align: right;
+}
+.comment-action .ant-btn {
+    margin: 10px 0 0 20px;
+    background-color: #0e77ca;
+    color: #fff;
+}
+
+
+.comment-list {
+
+}
+.comment-total {
+    margin-bottom: 20px;
+    font-size: 16px;
+    border-bottom: 1px solid #eee;
+}
+.comment-item {
+    margin-bottom: 20px;
+}
+.item-content {
+    padding-left: 20px;
+    font-size: 14px;
+    color: #444;
+}
+.item-reply {
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.item-child {
+    border-left: 2px solid #aaa;
+    margin-left: 20px;
+    margin-top: 15px;
+    padding-left: 20px;
+}
+.item-child-info {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+.item-child-user {
+    padding-right: 10px;
+    color: #00a854;
+}

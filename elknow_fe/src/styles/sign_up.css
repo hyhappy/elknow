@@ -1,0 +1,54 @@
+@import '~antd/dist/antd.css';
+
+.container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f1f1f1;
+}
+
+.sign {
+    width: 400px;
+    padding: 50px;
+    margin: 0 auto;
+    border-radius: 10px;
+    background: #fff;
+}
+
+.sign-title {
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 16px;
+    color: #444;
+}
+
+.sign-title span {
+    display: inline-block;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.sign-active {
+    color: #3194d0;
+    border-bottom: 2px solid #3194d0;
+}
+
+.sign-in-tip {
+    position: absolute;
+    margin-bottom: 10px;
+    height: 20px;
+    line-height: 20px;
+    color: #f00;
+}
+
+.login-form {
+      max-width: 300px;
+}
+.login-form-forgot {
+      float: right;
+}
+.login-form-button {
+    margin-top: 10px;
+    width: 100%;
+}

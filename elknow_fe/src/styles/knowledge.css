@@ -1,0 +1,65 @@
+@import '~antd/dist/antd.css';
+@import './common/nav.css';
+@import './common/comment.css';
+
+.know {
+    padding-top: 80px;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.know-info {
+    width: 700px;
+    margin: 0 auto;
+}
+
+/* 文章头信息 */
+.know-header {
+    text-align: center;
+    border-bottom: 1px solid #eee;
+}
+
+.know-title {
+    font-size: 28px;
+    font-weight: 300;
+}
+
+.know-meta {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #999;
+}
+
+.know-classify span{
+    font-size: 14px;
+    color: #444;
+}
+
+.know-content {
+    padding-top: 30px;
+}
+
+.know-content ol {
+    list-style: decimal inside;
+}
+.know-content ul {
+    list-style: initial;
+}
+
+/* 文章评论收藏 */
+.know-action {
+    margin-top: 30px;
+}
+
+.know-collect {
+    text-align: center;
+}
+
+.know-collect .ant-btn {
+    padding: 8px 25px;
+    border-radius: 5px;
+    font-size: 18px;
+    color: #fff;
+    background: #ec6149;
+}

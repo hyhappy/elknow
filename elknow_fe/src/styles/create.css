@@ -1,0 +1,36 @@
+.create {
+    height: 100%;
+    width: 980px;
+    margin: 0 auto;
+    font-size: 14px;
+}
+.create-info {
+    position: relative;
+}
+.create-info .ant-input {
+    width: 600px;
+}
+.create-action {
+    position: absolute;
+    top: 30px;
+    right: -30px;
+}
+
+.create-info-item {
+    margin-bottom: 5px;
+}
+.create-info-item span:first-child{
+    display: inline-block;
+    width: 100%;
+    margin: 5px 0;
+    font-size: 12px;
+}
+.create-info-item span:last-child{
+    margin-left: 10px;
+    color: #f00;
+}
+
+
+.ant-cascader-input.ant-input {
+    width: 200px;
+}

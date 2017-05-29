@@ -1,0 +1,30 @@
+/* nav */
+.elknow-nav {
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    z-index: 1000;
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.elknow-nav-user{
+    display: inline-block;
+    margin-right: 20px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+.nav-title {
+    flex: 1;
+    margin-left: 100px;
+    font-size: 24px;
+    white-space: nowrap;
+    cursor: pointer;
+}
