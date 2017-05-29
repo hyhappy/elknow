@@ -18,7 +18,7 @@ class CommentItem extends Component {
     }
     // 回复点击事件，记录被回复人的信息，直接存入数据库，这样做简单
     handleReplyClick({name, user_id}) {
-        let replayToHtml = "<a href=\"/#/users/"+ user_id +"\" class=\"item-child-user\" target=\"_blank\" >@"+ name +"</a>";
+        let replayToHtml = "<a href=\"/users/"+ user_id +"\" class=\"item-child-user\" target=\"_blank\" >@"+ name +"</a>";
         this.setState({
             isShowInput: true,
             replayTo: "@" + name + " ",
@@ -42,11 +42,11 @@ class CommentItem extends Component {
         return (
             <div className="comment-item">
                 <div className="item-author">
-                    <a href={"/#/users/" + comment.user.user_id } target="_blank">
+                    <a href={"/users/" + comment.user.user_id } target="_blank">
                         <img src={"//localhost:8000/" + comment.user.head_image } />
                     </a>
                     <div className="item-author-info">
-                        <a href={"/#/users/" + comment.user.user_id } target="_blank" className="item-author-name">{comment.user.name}</a>
+                        <a href={"/users/" + comment.user.user_id } target="_blank" className="item-author-name">{comment.user.name}</a>
                         <div className="item-meta">
                             <span>{comment.create_time}</span>
                         </div>
@@ -63,7 +63,7 @@ class CommentItem extends Component {
                             return (
                                 <div key={index} className="item-child-info">
                                     <div>
-                                        <a href={"/#/users/" + comment.user.user_id} target="_blank">
+                                        <a href={"/users/" + comment.user.user_id} target="_blank">
                                             <span className="item-child-user">{item.user.name}:</span></a>
                                         <span dangerouslySetInnerHTML={{__html: item.content}}></span>
                                     </div>
@@ -205,7 +205,7 @@ class Comment extends Component {
         return (
             <div className="comment">
                 <div className="comment-new">
-                    <a className="comment-author" href={"/#/users/" + user.user_id } target="_blank">
+                    <a className="comment-author" href={"/users/" + user.user_id } target="_blank">
                         <img src={"//localhost:8000/" + user.head_image} />
                     </a>
                     <Input type="textarea" rows={4} placeholder="写下你的评论..." ref="commentInput"/>

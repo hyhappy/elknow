@@ -7,14 +7,14 @@ import Knowledge from './scripts/knowledge';
 import Management from './scripts/management';
 import UserInfo from './scripts/userInfo';
 
-import { Route, HashRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
 import './styles/index.css';
 
 ReactDOM.render((
     <Router>
         <div>
             <Route exact path="/" component={ Elknow } />
-            <Route path="/sign_up" component={ SignUp } />
+            <Route path="/sign_up" component={ SignUp } />            
             <Route path="/create" component={ Create } />
             <Route path="/knows/:id" component={ Knowledge } />
             <Route path="/users/:id" component={ UserInfo } />

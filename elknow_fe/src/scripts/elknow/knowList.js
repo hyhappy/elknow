@@ -8,16 +8,16 @@ class KnowItem extends Component {
         return (
             <div className="elknow-knowItem">
                 <div className="knowItem-author">
-                    <a className="author-headImage" target="_blank" href={"/#/users/" + info.user_id}>
+                    <a className="author-headImage" target="_blank" href={"/users/" + info.user_id}>
                         <img alt="" src={"//127.0.0.1:8000/" + info.head_image} />
                     </a>
                     <div className="author-info">
-                        <a className="author-name" href={"/#/users/" + info.user_id} target="_blank">
+                        <a className="author-name" href={"/users/" + info.user_id} target="_blank">
                             {info.name}</a>
                         <span className="author-create-time">{info.create_time}</span>
                     </div>
                 </div>
-                <a className="knowItem-title" target="_blank" href={"/#/knows/"+info.id}>{info.title}</a>
+                <a className="knowItem-title" target="_blank" href={"/knows/"+info.id}>{info.title}</a>
                 <p className="knowItem-abstract">
                     {info.abstract}
                 </p>

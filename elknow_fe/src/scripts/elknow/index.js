@@ -35,8 +35,8 @@ class Elknow extends Component {
         isSign.handleUserInfoGetNoSign.bind(this)();
 
         // 从其他页面跳转过来并且带着query参数时执行
-        if (!!location.hash.split('?')[1]) {
-            let queryString = location.hash.split('?')[1];
+        if (!!location.search.split('?')[1]) {
+            let queryString = location.search.split('?')[1];
             let query = queryString.split('=')[1];
             this.handleQueryChange(query);
         }
@@ -48,7 +48,7 @@ class Elknow extends Component {
 
     handleKnowListGet(page) {
         $.ajax({
-            url: '//47.93.254.33/knows/getKnowList',
+            url: '//127.0.0.1:8000/knows/getKnowList',
             type: 'get',
             xhrFields:{withCredentials:true},
             dataType: 'json',
@@ -81,7 +81,7 @@ class Elknow extends Component {
 
     handleHotKnowListGet(page) {
         $.ajax({
-            url: '//47.93.254.33/knows/getHotKnowList',
+            url: '//127.0.0.1:8000/knows/getHotKnowList',
             type: 'get',
             xhrFields:{withCredentials:true},
             dataType: 'json',

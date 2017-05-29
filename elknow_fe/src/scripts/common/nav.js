@@ -32,13 +32,13 @@ class Nav extends Component {
                         query: value
                     })
                 } else {
-                    location.hash='/?query=' + this.state.query
+                    location='/?query=' + this.state.query
                 }
             }
         }
         return (
             <div className="elknow-nav">
-                <span className="nav-title"><a href="/#/">乐知</a></span>
+                <span className="nav-title"><a href="/">乐知</a></span>
                 <Search placeholder="搜索" size="large" value={query}
                     onChange={ e => queryChange(e.target.value, e) }
                     onSearch={ value => queryChange(value) }/>
@@ -47,10 +47,10 @@ class Nav extends Component {
                         <span className="elknow-nav-user" onClick={
                                 this.handleUserNameClick.bind(this, user)
                             }>{user}</span>:
-                        <Button type="dashed"><a href="/#/sign_up">登录</a></Button>
+                        <Button type="dashed"><a href="/sign_up">登录</a></Button>
                 }
-                <Button type="primary"><a href="/#/sign_up?signUp">注册</a></Button>
-                <Button type="primary"><a href="/#/create">写文章</a></Button>
+                <Button type="primary"><a href="/sign_up?signUp">注册</a></Button>
+                <Button type="primary"><a href="/create">写文章</a></Button>
             </div>
         )
     }

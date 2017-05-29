@@ -10,7 +10,7 @@ const isSign = {
         let user = cookie.parse(document.cookie).user;
         if(!user) {
             message.error('你还没有登录，请先登录...', 2, () => {
-                location.hash = 'sign_up';
+                location = '/sign_up';
             });
             return;
         }
@@ -30,7 +30,7 @@ const isSign = {
                     })
                 } else {
                     message.error('你还没有登录，请先登录...', 2, () => {
-                        location.hash = 'sign_up';
+                        location = '/sign_up';
                     });
                 }
             }
@@ -70,10 +70,10 @@ const isSign = {
             data: {name: user},
             success: res => {
                 if(res.status === 0) {
-                    location.hash = 'users/' + res.data.user_id
+                    location = '/users/' + res.data.user_id
                 } else {
                     message.error('你已经失去登录状态，请先登录...', 2, () => {
-                        location.hash = 'sign_up';
+                        location = '/sign_up';
                     });
                 }
             }
@@ -84,7 +84,7 @@ const isSign = {
         let user = cookie.parse(document.cookie).user;
         if(!user) {
             message.error('你还没有登录，请先登录...', 1, () => {
-                location.hash = 'sign_up';
+                location = '/sign_up';
             });
             return;
         }
@@ -104,7 +104,7 @@ const isSign = {
                     }, mustAdmin)
                 } else {
                     message.error('你还没有登录，请先登录...', 2, () => {
-                        location.hash = 'sign_up';
+                        location = '/sign_up';
                     });
                 }
             }

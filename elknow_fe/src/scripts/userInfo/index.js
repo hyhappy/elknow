@@ -197,12 +197,12 @@ class UserInfo extends Component {
         return (
             <Layout style={{height: '100%'}}>
                 <Header className="header">
-                    <a href={"/#/users/" + this.state.userInfo.user_id}>{this.state.userInfo.name+"的个人中心"}</a>
+                    <a href={"/users/" + this.state.userInfo.user_id}>{this.state.userInfo.name+"的个人中心"}</a>
                     {
-                        this.state.user.admin === 1? <a href="/#/management/manage"
+                        this.state.user.admin === 1? <a href="/management/manage"
                             className="manage">进入管理中心</a> : ''
                     }
-                    <a href="/#/" className="index">首页</a>
+                    <a href="/" className="index">首页</a>
                 </Header>
                 <Layout>
                     <Sider width={200} style={{
@@ -241,7 +241,7 @@ class UserInfo extends Component {
                                         [{
                                             type: '编辑',
                                             action: (record) => {
-                                                    location.hash = 'create?id=' + record.id;
+                                                    location = '/create?id=' + record.id;
                                                 }
                                         }, {
                                             type: '删除',

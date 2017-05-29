@@ -27,7 +27,7 @@ class Management extends Component {
         isSign.handleUserIsAdmin.bind(this)(() => {
             if(this.state.user.admin !== 1) {
                 message.error('你不是管理员，即将跳到首页...', 2, () => {
-                    location.hash = '';
+                    location = '/';
                 });
             }
         });
@@ -115,7 +115,7 @@ class Management extends Component {
         return (
             <Layout style={{height: '100%'}}>
                 <Header className="header">
-                    <a href="/#/management/manage" className="manage">管理中心</a>
+                    <a href="/management/manage" className="manage">管理中心</a>
                 </Header>
                 <Layout>
                     <Sider width={200} style={{

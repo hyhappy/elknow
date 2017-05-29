@@ -13,8 +13,8 @@ class HotKnow extends Component {
                     knows.map((item, index) => {
                         return (
                             <li key={index} className="hotKnow-item">
-                                <a className="hotKnow-title" target="_blank" href={"/#/knows/"+item.id}>{item.title}</a>
-                                <a className="hotKnow-author-name" href={"/#/users/" + item.user_id} target="_blank">{'-- ' + item.name}</a>
+                                <a className="hotKnow-title" target="_blank" href={"/knows/"+item.id}>{item.title}</a>
+                                <a className="hotKnow-author-name" href={"/users/" + item.user_id} target="_blank">{'-- ' + item.name}</a>
                                 <ul className="hotKnow-info">
                                     <li>
                                         <Icon type="eye"></Icon>

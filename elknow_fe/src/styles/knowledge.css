@@ -57,6 +57,7 @@
 }
 
 .know-collect .ant-btn {
+    box-sizing: content-box;
     padding: 8px 25px;
     border-radius: 5px;
     font-size: 18px;

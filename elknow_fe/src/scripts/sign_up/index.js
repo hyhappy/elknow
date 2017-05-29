@@ -28,7 +28,7 @@ class Login extends Component {
 
     componentDidMount() {
         // 判断是不是 注册，从导航栏过来的时候会带参数signUp
-        if(location.hash.split('?')[1] === 'signUp') {
+        if(location.search.split('?')[1] === 'signUp') {
             this.setState({
                 isSignIn: false
             })

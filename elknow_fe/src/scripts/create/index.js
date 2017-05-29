@@ -35,7 +35,7 @@ class Create extends Component {
         // 获取用户信息
         isSign.handleUserInfoGet.bind(this)();
 
-        let query = location.hash.split('?')[1];
+        let query = location.split('?')[1];
         if(!!query) {
             query = query.split('=')[1];
         }
@@ -100,7 +100,7 @@ class Create extends Component {
                     this.state.editor.$txt.html(res.data.content);
                 } else {
                     message.error('文章获取失败...', 2, () => {
-                        location.hash = '/';
+                        location = '/';
                     });
                 }
             }
@@ -153,7 +153,7 @@ class Create extends Component {
             success: res => {
                 if(res.status === 0) {
                     message.success('创建成功...两秒后跳到详情页', 2, () => {
-                        location.hash = 'knows/' + res.data.id
+                        location = 'knows/' + res.data.id
                     })
                 }
             }
@@ -178,7 +178,7 @@ class Create extends Component {
             <div className="create">
                 <div className="create-info">
                     <div className="create-action">
-                        <Button type="primary" onClick={()=>location.hash='/'}>取消</Button>
+                        <Button type="primary" onClick={()=>location='/'}>取消</Button>
                         <Button type="primary" disabled={this.state.isSubmit || !this.state.user}
                             onClick={this.handleSubmitClick.bind(this)}>发布</Button>
                     </div>
