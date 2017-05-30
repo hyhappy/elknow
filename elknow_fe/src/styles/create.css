@@ -19,7 +19,7 @@
 .create-info-item {
     margin-bottom: 5px;
 }
-.create-info-item span:first-child{
+.create-info-item>span:first-child{
     display: inline-block;
     width: 100%;
     margin: 5px 0;

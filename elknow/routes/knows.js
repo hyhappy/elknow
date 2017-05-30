@@ -11,6 +11,7 @@ router.post('/save', function(req, res, next) {
     params.collect_counts = 0;
     params.comment_counts = 0;
     params.read_counts = 0;
+    params.isOnline = 0;
     if(!!query) {
         knows.find({id: +query}, function(err, Knows) {
             if(err || Knows.length === 0 ) {
@@ -58,6 +59,35 @@ router.post('/save', function(req, res, next) {
             res.json(result);
         })
     }
+})
+
+router.get('/online', function(req, res, next) {
+    let knows = req.models.knows, result,
+        query = req.query.id,
+        online = req.query.type;
+    knows.find({id: +query}, function(err, Knows) {
+        if(err || Knows.length === 0 ) {
+            result = {
+                status: -1,
+                data: '',
+                message: '操作知识失败...'
+            }
+            res.json(result);
+        } else {
+            Knows[0].isOnline = (online === 'true'?1:0);
+            Knows[0].save(function(err) {
+                result = {
+                    status: 0,
+                    data: {
+                        id: Knows[0].id,
+                        isOnline: Knows[0].isOnline
+                    },
+                    message: '更新成功...'
+                }
+                res.json(result);
+            });
+        }
+    })
 })
 
 router.get('/delete', function(req, res, next) {
@@ -139,13 +169,8 @@ router.get('/getKnowInfo', function(req, res, next) {
         }
         res.json(result);
     } else {
-        // 阅读次数加一
-        knows.find({id: req.query.id}, function(err, Knows) {
-            Knows[0].read_counts++;
-            Knows[0].save();
-        })
         db.driver.execQuery("select k.*, u.name, u.head_image from user u inner join knowledge " +
-            "k on u.id = k.user_id where k.id = " + req.query.id,
+            "k on u.id = k.user_id where k.isOnline = 1 and k.id = " + req.query.id,
             function (err, data) {
                 if(err || !data || (data && data.length === 0)) {
                     result = {
@@ -154,6 +179,11 @@ router.get('/getKnowInfo', function(req, res, next) {
                         data: ''
                     }
                 } else {
+                    // 阅读次数加一
+                    knows.find({id: req.query.id}, function(err, Knows) {
+                        Knows[0].read_counts++;
+                        Knows[0].save();
+                    })
                     result = {
                         status: 0,
                         message: '获取文章成功...',
@@ -173,7 +203,7 @@ router.get('/getKnowList', function(req, res, next) {
     let pageSize = params.pageSize || 10, page = params.page, classify = params.classify,
         query = params.query;
     db.driver.execQuery("select k.*, u.name,u.head_image from user u inner join knowledge k " +
-    "on u.id = k.user_id WHERE k.classify LIKE '" + classify + "%' and " +
+    "on u.id = k.user_id WHERE k.isOnline = 1 and k.classify LIKE '" + classify + "%' and " +
     "(abstract like '%" + query + "%' or title like '%" + query + "%' or classifys like '%" + query + "%')" +
     "ORDER BY k.create_time DESC LIMIT "+ (page-1)*pageSize + "," + pageSize,
         function (err, data) {
@@ -198,7 +228,7 @@ router.get('/getKnowList', function(req, res, next) {
                     item.content = null;
                 })
                 db.driver.execQuery("select count(*) total from user u inner join knowledge k " +
-                "on u.id = k.user_id WHERE k.classify LIKE '" + classify + "%' and " +
+                "on u.id = k.user_id WHERE k.isOnline=1 and k.classify LIKE '" + classify + "%' and " +
                 "(abstract like '%" + query + "%' or title like '%" + query +
                 "%' or classifys like '%" + query + "%')", (err, data) => {
                     if(!err && data && data.length !== 0) {
@@ -217,7 +247,7 @@ router.get('/getHotKnowList', function(req, res, next) {
     let pageSize = params.pageSize, page = params.page;
     db.driver.execQuery("select k.id, k.user_id, k.title, k.read_counts, k.comment_counts, k.collect_counts, " +
     "u.name from user u inner join knowledge k " +
-    "on u.id = k.user_id ORDER BY k.read_counts + k.comment_counts*2 + k.collect_counts*3 DESC LIMIT "
+    "on u.id = k.user_id and k.isOnline = 1 ORDER BY k.read_counts + k.comment_counts*2 + k.collect_counts*3 DESC LIMIT "
     + (page-1)*pageSize + "," + pageSize,
         function (err, data) {
             if(err || !data) {
@@ -237,7 +267,7 @@ router.get('/getHotKnowList', function(req, res, next) {
                         pageSize: +pageSize
                     }
                 }
-                knows.count({ }, function (err, count) {
+                knows.count({ isOnline: 1}, function (err, count) {
                 	result.data.total = count;
                     res.json(result);
                 });

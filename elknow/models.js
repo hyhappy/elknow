@@ -8,6 +8,7 @@ var models = function(db) {
     }),
     knows = db.define("knowledge", {
         id: Number,
+        isOnline: Number,
         user_id: Number,
         create_time: Date,
         title: String,

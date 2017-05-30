@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var router = express.Router();
 var formidable = require('formidable');
 var fs = require('fs');
@@ -6,7 +7,8 @@ var util = require('util');
 
 // 文件将要上传到哪个文件夹下面
 var uploadfoldername = 'images';
-var uploadfolderpath = "D:\\peixun\\nodejs\\elknow\\public" + '\\' + uploadfoldername;
+var uploadfolderpath = process.cwd() + '\\public\\' + uploadfoldername;
+
 
 var server = '127.0.0.1';
 var port = 8000;
@@ -73,10 +75,10 @@ router.post('/', function(req, res, next) {
                     result = 'http://' + server + ':' + port + '/' + uploadfoldername + '/' + filename;
                 }
 
-                // 返回结果
-                res.writeHead(200, {
-                    'Content-type': 'application/json'
-                });
+                // // 返回结果
+                // res.writeHead(200, {
+                //     'Content-type': 'application/json'
+                // });
                 res.end(result);
             });
         } // for in

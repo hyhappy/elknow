@@ -36,6 +36,11 @@ class KnowList extends Component {
                 title: '创建时间',
                 dataIndex: 'create_time',
                 key: 'create_time'
+            }, {
+                title: '状态',
+                dataIndex: 'isOnline',
+                key: 'isOnline',
+                render: (text) => text === 1?'上线中':'下线中' 
             }
         ];
         if(!!isAuthor) {
@@ -48,8 +53,9 @@ class KnowList extends Component {
                         {
                             action.map((item,index) => {
                                 return (
-                                    <Button key={index}
-                                        onClick={() => item.action(record)}>{item.type}</Button>
+                                    <Button key={index} disabled={(record.isOnline === 0 && item.type === '下线') || 
+                                    (record.isOnline === 1 && item.type === '上线')}
+                                        onClick={() => item.action(record, item.type === '上线')}>{item.type}</Button>
                                 )
                             })
                         }

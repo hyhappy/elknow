@@ -43,7 +43,7 @@ class CommentItem extends Component {
             <div className="comment-item">
                 <div className="item-author">
                     <a href={"/users/" + comment.user.user_id } target="_blank">
-                        <img src={"//localhost:8000/" + comment.user.head_image } />
+                        <img src={comment.user.head_image } />
                     </a>
                     <div className="item-author-info">
                         <a href={"/users/" + comment.user.user_id } target="_blank" className="item-author-name">{comment.user.name}</a>
@@ -206,7 +206,7 @@ class Comment extends Component {
             <div className="comment">
                 <div className="comment-new">
                     <a className="comment-author" href={"/users/" + user.user_id } target="_blank">
-                        <img src={"//localhost:8000/" + user.head_image} />
+                        <img src={user.head_image} />
                     </a>
                     <Input type="textarea" rows={4} placeholder="写下你的评论..." ref="commentInput"/>
                     <div className="comment-action">

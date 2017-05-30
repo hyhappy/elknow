@@ -9,7 +9,7 @@ class KnowItem extends Component {
             <div className="elknow-knowItem">
                 <div className="knowItem-author">
                     <a className="author-headImage" target="_blank" href={"/users/" + info.user_id}>
-                        <img alt="" src={"//127.0.0.1:8000/" + info.head_image} />
+                        <img alt="" src={info.head_image} />
                     </a>
                     <div className="author-info">
                         <a className="author-name" href={"/users/" + info.user_id} target="_blank">

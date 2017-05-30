@@ -72,7 +72,7 @@ class Management extends Component {
     }
 
     handleKnowDelete(record) {
-        this.showConfirm('确定要删除该文章吗?', () => {
+        this.showConfirm('确定要删除该文章吗?', '删除之后将不可恢复', () => {
             $.ajax({
                 url: '//127.0.0.1:8000/knows/delete',
                 type: 'get',
@@ -98,10 +98,38 @@ class Management extends Component {
         })
     }
 
-    showConfirm(title, ok, cancel) {
+    handleKnowOnline(record, type) {
+        this.showConfirm('确定要上线该知识吗?', '', () => {
+            $.ajax({
+                url: '//127.0.0.1:8000/knows/online',
+                type: 'get',
+                xhrFields:{withCredentials:true},
+                dataType: 'json',
+                data: {
+                    id: record.id,
+                    type: type
+                },
+                success: res => {
+                    if(res.status === 0) {
+                        let knowList = this.state.knowList;
+                        let index = knowList.indexOf(record);
+                        knowList[index].isOnline = (type === true?1:0);
+                        this.setState({
+                            knowList: knowList
+                        })
+                        message.success('更新成功...', 2);
+                    } else {
+                        message.error(res.message, 2);
+                    }
+                }
+            })
+        })
+    }
+
+    showConfirm(title, content, ok, cancel) {
         confirm({
             title: title,
-            content: '删除后将不可恢复',
+            content: content,
             onOk() {
                 ok();
             },
@@ -115,6 +143,7 @@ class Management extends Component {
         return (
             <Layout style={{height: '100%'}}>
                 <Header className="header">
+                    <a href="/" className="manage">首页</a>
                     <a href="/management/manage" className="manage">管理中心</a>
                 </Header>
                 <Layout>
@@ -153,6 +182,12 @@ class Management extends Component {
                                         [{
                                             type: '删除',
                                             action: this.handleKnowDelete.bind(this)
+                                        }, {
+                                            type: '上线',
+                                            action: this.handleKnowOnline.bind(this)
+                                        }, {
+                                            type: '下线',
+                                            action: this.handleKnowOnline.bind(this)
                                         }]
                                     }
                                     isAuthor={true}

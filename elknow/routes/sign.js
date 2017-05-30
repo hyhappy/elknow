@@ -84,6 +84,17 @@ router.post('/signin', function(req, res, next) {
     });
 });
 
+router.get('/signOut', function(req, res, next) {
+    let result;
+    req.session.user = null;
+    result = {
+        status: 0,
+        data: req.session.user,
+        message: '用户成功退出...'
+    }
+    res.json(result);
+});
+
 router.post('/signup', function(req, res, next) {
     let user = req.models.user, result;
     let params = req.body, sqlParams;

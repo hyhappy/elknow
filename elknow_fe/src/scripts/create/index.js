@@ -35,7 +35,7 @@ class Create extends Component {
         // 获取用户信息
         isSign.handleUserInfoGet.bind(this)();
 
-        let query = location.split('?')[1];
+        let query = location.search.split('?')[1];
         if(!!query) {
             query = query.split('=')[1];
         }
@@ -152,8 +152,8 @@ class Create extends Component {
             data: JSON.stringify(data),
             success: res => {
                 if(res.status === 0) {
-                    message.success('创建成功...两秒后跳到详情页', 2, () => {
-                        location = 'knows/' + res.data.id
+                    message.success('创建成功...等待审核中,你可以在个人中心查看状态', 2, () => {
+                        location = '/';
                     })
                 }
             }

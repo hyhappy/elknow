@@ -71,6 +71,14 @@ class UserInfo extends Component {
         }
     }
 
+    handleUpdateImage(image) {
+        let userInfo = this.state.userInfo;
+        userInfo.head_image = image;
+        this.setState({
+            userInfo: userInfo
+        })
+    }
+
     // 获取该用户的所有收藏,无分页
     handleCollectListGet() {
         $.ajax({
@@ -233,7 +241,10 @@ class UserInfo extends Component {
                             minHeight: 280
                         }}>
                             {
-                                this.state.selectedKeys === 1?<Info userInfo={this.state.userInfo}/>:''
+                                this.state.selectedKeys === 1?<Info userInfo={this.state.userInfo}
+                                    isAuthor={this.state.userInfo.user_id === this.state.user.user_id}
+                                    changeImage={this.handleUpdateImage.bind(this)}
+                                />:''
                             }
                             {
                                 this.state.selectedKeys === 2?

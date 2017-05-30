@@ -16,7 +16,7 @@ class Knowledge extends Component {
 
             },
             user: {
-                head_image: 'images/default.png'
+                head_image: '//127.0.0.1:8000/images/default.png'
             },
             isCollected: false
         }
