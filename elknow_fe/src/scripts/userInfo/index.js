@@ -252,7 +252,7 @@ class UserInfo extends Component {
                                         [{
                                             type: '编辑',
                                             action: (record) => {
-                                                    location = '/create?id=' + record.id;
+                                                    location.href = '/create?id=' + record.id;
                                                 }
                                         }, {
                                             type: '删除',

@@ -56,13 +56,13 @@ class Info extends Component {
             {
                 !!isAuthor?
                 <div className="user-info-item user-info-img">
-                    <span>用户头像：</span><img onClick={() => this.refs.file.click()} title="点击更换头像"
+                    <span>用户头像：</span><img alt="头像找不到了" onClick={() => this.refs.file.click()} title="点击更换头像"
                         src={userInfo.head_image}></img>
                         <input id="file" ref="file" type="file" onChange={this.handleUploadImage.bind(this)} 
                             style={{display:'none'}}/>
                 </div>:
                 <div className="user-info-item user-info-img">
-                    <span>用户头像：</span><img src={userInfo.head_image}></img>
+                    <span>用户头像：</span><img alt="头像找不到了" src={userInfo.head_image}></img>
                 </div>
             }
             <Button type="primary" onClick={this.handleSignOut}>退出系统</Button>

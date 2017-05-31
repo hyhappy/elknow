@@ -32,12 +32,25 @@ var models = function(db) {
         parent_id: Number,
         know_id: Number,
         create_time: Date
+    }),
+    course = db.define("course", {
+        id: Number,
+        title: String,
+        type: Number,
+        abstract: String,
+        cover: String,
+        files: String,
+        hours: Number,
+        isOnline: Number,
+        teacher: String,
+        dateTime: String
     })
     return {
         user: user,
         knows: knows,
         collect: collect,
-        comment: comment
+        comment: comment,
+        course: course
     }
 }
 

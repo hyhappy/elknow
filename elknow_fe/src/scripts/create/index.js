@@ -100,7 +100,7 @@ class Create extends Component {
                     this.state.editor.$txt.html(res.data.content);
                 } else {
                     message.error('文章获取失败...', 2, () => {
-                        location = '/';
+                        location.href = '/';
                     });
                 }
             }
@@ -153,7 +153,7 @@ class Create extends Component {
             success: res => {
                 if(res.status === 0) {
                     message.success('创建成功...等待审核中,你可以在个人中心查看状态', 2, () => {
-                        location = '/';
+                        location.href = '/';
                     })
                 }
             }

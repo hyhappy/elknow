@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Menu, Dropdown, Badge } from 'antd';
+import { Menu, Dropdown } from 'antd';
 import classify from '../util/classifyData.js';
 
 let menu = [];

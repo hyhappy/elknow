@@ -32,7 +32,7 @@ class Nav extends Component {
                         query: value
                     })
                 } else {
-                    location='/?query=' + this.state.query
+                    location.href ='/?query=' + this.state.query
                 }
             }
         }

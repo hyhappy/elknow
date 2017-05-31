@@ -5,6 +5,7 @@ import $ from 'jquery';
 import KnowList from '../common/knowTable.js';
 import UserList from '../common/userList.js';
 import util from '../util/util.js';
+import KnowCreate from './knowCreate.js';
 
 const confirm = Modal.confirm;
 const {SubMenu} = Menu;
@@ -28,7 +29,7 @@ class Management extends Component {
         isSign.handleUserIsAdmin.bind(this)(() => {
             if(this.state.user.admin !== 1) {
                 message.error('你不是管理员，即将跳到首页...', 2, () => {
-                    location = '/';
+                    location.href = '/';
                 });
             }
             this.handleUserListGet();
@@ -257,6 +258,10 @@ class Management extends Component {
                             {
                                 this.state.selectedKeys === 3?
                                 <span>啥都没有...</span>:''
+                            }
+                            {
+                                this.state.selectedKeys === 4?
+                                <KnowCreate />:''
                             }
                         </Content>
                     </Layout>

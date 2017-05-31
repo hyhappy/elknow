@@ -18,6 +18,7 @@ var upload = require('./routes/upload');
 var knows = require('./routes/knows');
 var comment = require('./routes/comment');
 var collect = require('./routes/collect');
+var course = require('./routes/course');
 
 var app = express();
 
@@ -42,7 +43,7 @@ app.use(session({
 // 跨域
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
     res.header('Access-Control-Allow-Credentials', true);
     if (req.method == 'OPTIONS') {
         res.writeHead(200, {
@@ -64,6 +65,7 @@ app.use(orm.express(consts.dbConfig, {
         models.db = db;
         models.collect = model.collect;
         models.comment = model.comment;
+        models.course = model.course;
 		next();
 	}
 }));
@@ -76,6 +78,7 @@ app.use('/sign', sign);
 app.use('/knows', knows);
 app.use('/comment', comment);
 app.use('/collect', collect);
+app.use('/course', course);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

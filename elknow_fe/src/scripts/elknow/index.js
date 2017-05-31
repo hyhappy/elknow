@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 // import {} from 'antd';
 // import $ from 'jquery';
-import cookie from 'cookie';
 import { BackTop} from 'antd';
 import '../../styles/elknow.css';
 import Nav from '../common/nav.js';

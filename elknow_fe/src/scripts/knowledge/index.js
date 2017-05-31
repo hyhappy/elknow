@@ -25,7 +25,7 @@ class Knowledge extends Component {
         let { match } = this.props;
         if(!match || isNaN(match.params.id)) {
             message.error('文章不存在...', 2, () => {
-                location = '/';
+                location.href = '/';
             });
             return;
         }
@@ -47,7 +47,7 @@ class Knowledge extends Component {
                     })
                 } else {
                     message.error('文章获取失败...', 2, () => {
-                        location = '/';
+                        location.href = '/';
                     });
                 }
             }
