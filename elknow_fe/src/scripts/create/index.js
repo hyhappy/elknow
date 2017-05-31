@@ -81,7 +81,7 @@ class Create extends Component {
 
     handleKnowEdit(query) {
         $.ajax({
-            url: '//127.0.0.1:8000/knows/getKnowInfo',
+            url: '//127.0.0.1:8000/knows/getEditKnowInfo',
             type: 'get',
             xhrFields:{withCredentials:true},
             dataType: 'json',
@@ -178,7 +178,7 @@ class Create extends Component {
             <div className="create">
                 <div className="create-info">
                     <div className="create-action">
-                        <Button type="primary" onClick={()=>location='/'}>取消</Button>
+                        <Button type="primary" onClick={()=>history.back()}>取消</Button>
                         <Button type="primary" disabled={this.state.isSubmit || !this.state.user}
                             onClick={this.handleSubmitClick.bind(this)}>发布</Button>
                     </div>

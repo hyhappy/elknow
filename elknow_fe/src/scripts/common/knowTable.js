@@ -11,7 +11,7 @@ class KnowList extends Component {
                 dataIndex: 'title',
                 key: 'title',
                 render: (text, record) => <a key={ record.id }
-                    target="_blank" href={'/knows/' + record.id}>{text}</a>
+                     href={(record.isOnline===1?'/knows/':'/create?id=') + record.id}>{text}</a>
             }, {
                 title: '摘要',
                 dataIndex: 'abstract',

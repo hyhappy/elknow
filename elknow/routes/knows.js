@@ -159,6 +159,38 @@ router.get('/getUsersKnowList', function(req, res, next) {
     }
 })
 
+router.get('/getEditKnowInfo', function(req, res, next) {
+    let knows = req.models.knows, result;
+    if(!req.query.id) {
+        result = {
+            status: -1,
+            message: '缺少文章id，获取文章失败...',
+            data: ''
+        }
+        res.json(result);
+    } else {
+        knows.find({id: req.query.id}, 
+            function (err, Knows) {
+                if(err || !Knows || (Knows && Knows.length === 0)) {
+                    result = {
+                        status: -1,
+                        message: '文章id错误，获取文章失败...',
+                        data: ''
+                    }
+                } else {
+                    result = {
+                        status: 0,
+                        message: '获取文章成功...',
+                        data: Knows[0]
+                    }
+                    result.data.content = result.data.content.toString('utf8');
+                }
+                res.json(result);
+            }
+        )
+    }
+})
+
 router.get('/getKnowInfo', function(req, res, next) {
     let db = req.models.db, result, knows = req.models.knows;
     if(!req.query.id) {

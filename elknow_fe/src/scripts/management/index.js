@@ -3,6 +3,7 @@ import {Layout, Menu, Modal, Icon, message} from 'antd';
 import isSign from '../util/sign.js';
 import $ from 'jquery';
 import KnowList from '../common/knowTable.js';
+import UserList from '../common/userList.js';
 import util from '../util/util.js';
 
 const confirm = Modal.confirm;
@@ -30,7 +31,9 @@ class Management extends Component {
                     location = '/';
                 });
             }
+            this.handleUserListGet();
         });
+        
     }
 
     handleMenuSelect({key}) {
@@ -38,7 +41,7 @@ class Management extends Component {
             selectedKeys: +key
         });
         if(+key === 1 && this.state.userList.length === 0) {
-            // this.handleKnowListGet();
+            this.handleUserListGet();
         } else if(+key === 2 && this.state.knowList.length === 0) {
             this.handleKnowListGet();
         } else {
@@ -46,6 +49,51 @@ class Management extends Component {
         }
     }
 
+    handleUserListGet() {
+        $.ajax({
+            url: '//127.0.0.1:8000/users/getUserLists',
+            type: 'get',
+            xhrFields:{withCredentials:true},
+            dataType: 'json',
+            success: res => {
+                if(res.status === 0) {
+                    this.setState({
+                        userList: res.data
+                    })
+                } else {
+
+                }
+            }
+        })
+    }
+
+    handleAuthorityChange(record) {
+        this.showConfirm('确定要将其设置为'+(record.admin===1?'普通用户吗':'管理员吗'), '', () => {
+            $.ajax({
+                url: '//127.0.0.1:8000/users/authorityChange',
+                type: 'get',
+                xhrFields:{withCredentials:true},
+                dataType: 'json',
+                data: {
+                    id: record.user_id,
+                    admin: record.admin
+                },
+                success: res => {
+                    if(res.status === 0) {
+                        let userList = this.state.userList;
+                        let index = userList.indexOf(record);
+                        userList[index].admin = res.data;
+                        this.setState({
+                            userList: userList
+                        })
+                        message.success('修改成功...', 2);
+                    } else {
+                        message.error(res.message, 2);
+                    }
+                }
+            })
+        })
+    }
 
     // 获取所有文章,无分页
     handleKnowListGet() {
@@ -155,12 +203,16 @@ class Management extends Component {
                             style={{
                                 height: '100%'
                             }}>
-                            <SubMenu key="sub1" title={< span >  管理中心< /span>}>
+                            <SubMenu key="sub1" title={< span >  <Icon type="laptop"/>管理中心< /span>}>
                                 <Menu.Item key="1"><Icon type="user"/>所有用户</Menu.Item>
                                 <Menu.Item key="2"><Icon type="file"/>所有文章</Menu.Item>
+                                <SubMenu key="sub3" title={< span > <Icon type="laptop"/> 知识管理< /span>}>
+                                    <Menu.Item key="3"><Icon type="book"/>所有知识</Menu.Item>
+                                    <Menu.Item key="4"><Icon type="file-add"/>知识创建</Menu.Item>
+                                </SubMenu>
                             </SubMenu>
                             <SubMenu key="sub2" title={< span > <Icon type="laptop"/>扩展用< /span>}>
-                                <Menu.Item key="3">比如...</Menu.Item>
+                                <Menu.Item key="5">比如...</Menu.Item>
                             </SubMenu>
                         </Menu>
                     </Sider>
@@ -174,7 +226,15 @@ class Management extends Component {
                             minHeight: 280
                         }}>
                             {
-                                this.state.selectedKeys === 1?<span>用户</span>:''
+                                this.state.selectedKeys === 1?<UserList action={
+                                    [{
+                                        type: '',
+                                        action: this.handleAuthorityChange.bind(this)
+                                    }]
+                                }
+                                isAuthor={true}
+                                users={this.state.userList}
+                                user={this.state.user}/>:''
                             }
                             {
                                 this.state.selectedKeys === 2?
