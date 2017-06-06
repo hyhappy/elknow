@@ -6,6 +6,7 @@ import Create from './scripts/create';
 import Knowledge from './scripts/knowledge';
 import Management from './scripts/management';
 import UserInfo from './scripts/userInfo';
+import Course from './scripts/course';
 
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import './styles/index.css';
@@ -19,6 +20,7 @@ ReactDOM.render((
             <Route path="/knows/:id" component={ Knowledge } />
             <Route path="/users/:id" component={ UserInfo } />
             <Route path="/management/:module" component={ Management } />
+            <Route path="/course" component={Course} />
         </div>
     </Router>
 ), document.getElementById('root'));

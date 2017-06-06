@@ -51,6 +51,7 @@ class Nav extends Component {
                 }
                 <Button type="primary"><a href="/sign_up?signUp">注册</a></Button>
                 <Button type="primary"><a href="/create">写文章</a></Button>
+                <Button type="primary"><a href="/course">知识库</a></Button>
             </div>
         )
     }
