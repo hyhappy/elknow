@@ -4,6 +4,7 @@ var router = express.Router();
 // 大量嵌套的异步操作，时间紧迫没有进行处理
 router.post('/save', function(req, res, next) {
     let comment = req.models.comment, user = req.models.user;
+    let knows = req.models.knows;
     let params = req.body, result;
     if(params.parent_id === '') {
         params.parent_id = 1
@@ -28,6 +29,10 @@ router.post('/save', function(req, res, next) {
                     head_image: Users[0].head_image
                 }
                 res.json(result);
+            })
+            knows.find({id: Comments[0].know_id}, function(err, Knows) {
+                Knows[0].comment_counts++;
+                Knows[0].save();
             })
         }
     })

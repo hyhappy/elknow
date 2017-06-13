@@ -22,6 +22,7 @@ router.post('/save', function(req, res, next) {
                 }
                 res.json(result);
             } else {
+                console.log(params)
                 Knows[0].title = params.title;
                 Knows[0].classify = params.classify;
                 Knows[0].classifys = params.classifys;
@@ -277,8 +278,8 @@ router.get('/getHotKnowList', function(req, res, next) {
     let knows = req.models.knows, result;
     let db = req.models.db, params = req.query;
     let pageSize = params.pageSize, page = params.page;
-    db.driver.execQuery("select k.id, k.user_id, k.title, k.read_counts, k.comment_counts, k.collect_counts, " +
-    "u.name from user u inner join knowledge k " +
+    db.driver.execQuery("select k.id, k.create_time, k.user_id, k.title, k.read_counts, k.comment_counts, k.collect_counts, " +
+    "u.name, u.head_image from user u inner join knowledge k " +
     "on u.id = k.user_id and k.isOnline = 1 ORDER BY k.read_counts + k.comment_counts*2 + k.collect_counts*3 DESC LIMIT "
     + (page-1)*pageSize + "," + pageSize,
         function (err, data) {

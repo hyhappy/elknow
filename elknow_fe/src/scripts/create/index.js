@@ -185,11 +185,14 @@ class Create extends Component {
                     <div className="create-info-item">
                         <span>文章标题: </span>
                         <Input value={this.state.title} placeholder="请输入标题..." onChange={ value => {
-                                this.setState({
-                                    title: value.target.value
-                                })
+                                if(this.state.title.length < 20) {
+                                    this.setState({
+                                        title: value.target.value
+                                    })
+                                }
                             }}/>
-                        <span>{this.state.title.length !== 0?"":"请输入标题..."}</span>
+                        <span>{this.state.title.length !== 0?"":"请输入标题，最多20字符"}</span>
+                        <span>{this.state.title.length < 20?"":"最多20字符"}</span>
                     </div>
                     <div className="create-info-item">
                         <span>文章分类: </span>
